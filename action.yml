@@ -6,19 +6,20 @@ runs:
   steps:
   - run: |
       set -xeu
+      # vue -V should be like '@vue/cli 4.5.4'
       VUE_CLI_VERSION=$(npx -p @vue/cli vue -V | awk '{print $2}')
+      BRANCH_NAME="actions/vue-upgrade/vue-cli-${VUE_CLI_VERSION}"
       # echo Y | npx -p @vue/cli vue upgrade
       touch new_file
       ls -l
       git status
-      git checkout -b actions/vue-upgrade
+      git checkout -b $BRANCH_NAME
       git config --global user.email "github-actions[bot]@users.noreply.github.com"
       git config --global user.name "github-actions[bot]"
       # git add package*.json
       git add new_file
       git commit -m "vue upgrade (@vue/cli $VUE_CLI_VERSION)"
-      git push -fu origin "actions/vue-upgrade/cli/${VUE_CLI_VERSION}"
-      # export GITHUB_TOKEN=$(node -p "process.env['INPUT_GITHUB-TOKEN']")
+      git push -fu origin $BRANCH_NAME
       gh pr create --title "vue upgrade (@vue/cli $VUE_CLI_VERSION)" --body='Update dependencies with `vue upgrade`.'
     shell: bash
     env:
