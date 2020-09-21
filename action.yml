@@ -16,5 +16,6 @@ runs:
       # git add package*.json
       git add new_file
       git commit -m 'vue upgrade'
-      git push -fu origin actions/vue-upgrade
+      # git push -fu origin actions/vue-upgrade
+      git log
     shell: bash
