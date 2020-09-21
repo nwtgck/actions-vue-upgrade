@@ -6,7 +6,7 @@ runs:
   steps:
   - run: |
       set -xeu
-      echo Y | npx @vue/cli upgrade
+      echo Y | npx @vue/cli vue upgrade
       ls -l
       git status
     shell: bash
