@@ -6,5 +6,5 @@ runs:
   steps:
   - run: |
       set -xeu
-      npm i -g @vue/cli
+      sudo npm install -g @vue/cli
     shell: bash
