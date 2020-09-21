@@ -6,9 +6,7 @@ runs:
   steps:
   - run: |
       set -xeu
-      sudo npm i -g @vue/cli
-      sudo vue upgrade
-      # echo Y | npx @vue/cli vue upgrade
+      echo Y | npx -p @vue/cli vue upgrade
       ls -l
       git status
     shell: bash
