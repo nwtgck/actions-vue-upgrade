@@ -9,4 +9,5 @@ runs:
       sudo npm install -g @vue/cli
       vue upgrade
       ls -l
+      git status
     shell: bash
