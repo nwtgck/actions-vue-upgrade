@@ -20,7 +20,6 @@ runs:
       git add new_file
       git commit -m "@vue/cli $VUE_CLI_VERSION by vue upgrade"
       git push -fu origin $BRANCH_NAME
-      # TODO: remove --base=vue-upgrade
       gh pr create --base=vue-upgrade --title "@vue/cli $VUE_CLI_VERSION" --body='Update dependencies with `vue upgrade`.'
     shell: bash
     env:
