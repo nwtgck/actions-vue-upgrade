@@ -23,5 +23,6 @@ runs:
       git push -fu origin actions/vue-upgrade
       git log
       export GITHUB_TOKEN=$(node -p "process.env['INPUT_GITHUB-TOKEN']")
+      gh auth login
       gh pr create --base actions/vue-upgrade --title 'vue upgrade'
     shell: bash
