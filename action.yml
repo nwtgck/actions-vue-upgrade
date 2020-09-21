@@ -1,6 +1,10 @@
 name: 'vue-upgrade'
 description: 'vue upgrade'
 author: 'Ryo Ota'
+inputs:
+  github-token:
+    description: GitHub Token
+    required: true
 runs:
   using: 'composite'
   steps:
