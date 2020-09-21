@@ -22,4 +22,5 @@ runs:
       git commit -m 'vue upgrade'
       git push -fu origin actions/vue-upgrade
       git log
+      gh pr create --base actions/vue-upgrade --title 'vue upgrade'
     shell: bash
