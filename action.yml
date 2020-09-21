@@ -4,5 +4,20 @@ author: 'Ryo Ota'
 runs:
   using: 'composite'
   steps:
-    - run: echo "hello, world"
-      shell: bash
+  - run: |
+      set -xeu
+      # vue -V should be like '@vue/cli 4.5.4'
+      VUE_CLI_VERSION=$(npx -p @vue/cli vue -V | awk '{print $2}')
+      BRANCH_NAME="actions/vue-upgrade/vue-cli-${VUE_CLI_VERSION}"
+      echo Y | npx -p @vue/cli vue upgrade
+      git status
+      git checkout -b $BRANCH_NAME
+      git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      git config --global user.name "github-actions[bot]"
+      git add package*.json
+      git commit -m "@vue/cli $VUE_CLI_VERSION with vue upgrade"
+      git push -fu origin $BRANCH_NAME
+      gh pr create --title "@vue/cli $VUE_CLI_VERSION" --body='Update dependencies with `vue upgrade`.'
+    shell: bash
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
