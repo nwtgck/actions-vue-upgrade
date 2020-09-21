@@ -6,7 +6,15 @@ runs:
   steps:
   - run: |
       set -xeu
-      echo Y | npx -p @vue/cli vue upgrade
+      # echo Y | npx -p @vue/cli vue upgrade
+      touch new_file
       ls -l
       git status
+      git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      git config --global user.name "github-actions[bot]"
+      git checkout -b actions/vue-upgrade
+      # git add package*.json
+      git add new_file
+      git commit -m 'vue upgrade'
+      git push -fu origin actions/vue-upgrade
     shell: bash
