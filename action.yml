@@ -22,7 +22,7 @@ runs:
       git commit -m 'vue upgrade'
       git push -fu origin actions/vue-upgrade
       # export GITHUB_TOKEN=$(node -p "process.env['INPUT_GITHUB-TOKEN']")
-      gh pr create --title 'vue upgrade'
+      gh pr create --title 'vue upgrade' --body='Update dependencies with `vue upgrade`.'
     shell: bash
     env:
       GITHUB_TOKEN: ${{ github.token }}
