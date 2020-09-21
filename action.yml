@@ -18,7 +18,7 @@ runs:
       git config --global user.name "github-actions[bot]"
       # git add package*.json
       git add new_file
-      git commit -m "@vue/cli $VUE_CLI_VERSION by vue upgrade"
+      git commit -m "@vue/cli $VUE_CLI_VERSION with vue upgrade"
       git push -fu origin $BRANCH_NAME
       gh pr create --base=vue-upgrade --title "@vue/cli $VUE_CLI_VERSION" --body='Update dependencies with `vue upgrade`.'
     shell: bash
