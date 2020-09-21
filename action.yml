@@ -26,3 +26,4 @@ runs:
       gh auth login
       gh pr create --base actions/vue-upgrade --title 'vue upgrade'
     shell: bash
+  - run: echo 'hello!'
