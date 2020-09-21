@@ -1,0 +1,8 @@
+name: 'vue-upgrade'
+description: 'vue upgrade'
+author: 'Ryo Ota'
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "hello, world"
+      shell: bash
