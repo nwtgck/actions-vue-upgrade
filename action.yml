@@ -21,8 +21,6 @@ runs:
       git add new_file
       git commit -m 'vue upgrade'
       git push -fu origin actions/vue-upgrade
-      # TODO: remove
-      env
       # export GITHUB_TOKEN=$(node -p "process.env['INPUT_GITHUB-TOKEN']")
       gh pr create --base actions/vue-upgrade --title 'vue upgrade'
     shell: bash
