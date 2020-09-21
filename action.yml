@@ -10,9 +10,9 @@ runs:
       touch new_file
       ls -l
       git status
+      git checkout -b actions/vue-upgrade
       git config --global user.email "github-actions[bot]@users.noreply.github.com"
       git config --global user.name "github-actions[bot]"
-      git checkout -b actions/vue-upgrade
       # git add package*.json
       git add new_file
       git commit -m 'vue upgrade'
