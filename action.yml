@@ -7,4 +7,6 @@ runs:
   - run: |
       set -xeu
       sudo npm install -g @vue/cli
+      vue upgrade
+      ls -l
     shell: bash
