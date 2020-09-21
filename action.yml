@@ -4,5 +4,7 @@ author: 'Ryo Ota'
 runs:
   using: 'composite'
   steps:
-    - run: echo "hello, world"
-      shell: bash
+    - run: |
+      set -xeu
+      npm i -g @vue/cli
+    shell: bash
