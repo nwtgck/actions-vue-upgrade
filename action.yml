@@ -6,6 +6,7 @@ runs:
   steps:
   - run: |
       set -xeu
+      export VUE_CLI_VERSION=$(npx -p @vue/cli vue -V) | awk '{print $2}'
       # echo Y | npx -p @vue/cli vue upgrade
       touch new_file
       ls -l
@@ -15,10 +16,10 @@ runs:
       git config --global user.name "github-actions[bot]"
       # git add package*.json
       git add new_file
-      git commit -m 'vue upgrade'
-      git push -fu origin actions/vue-upgrade
+      git commit -m "vue upgrade (@vue/cli $VUE_CLI_VERSION)"
+      git push -fu origin "actions/vue-upgrade/cli/${VUE_CLI_VERSION}"
       # export GITHUB_TOKEN=$(node -p "process.env['INPUT_GITHUB-TOKEN']")
-      gh pr create --title 'vue upgrade' --body='Update dependencies with `vue upgrade`.'
+      gh pr create --title "vue upgrade (@vue/cli $VUE_CLI_VERSION)" --body='Update dependencies with `vue upgrade`.'
     shell: bash
     env:
       GITHUB_TOKEN: ${{ github.token }}
