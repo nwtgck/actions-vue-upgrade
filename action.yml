@@ -27,6 +27,6 @@ runs:
       gh pr create --base actions/vue-upgrade --title 'vue upgrade'
     shell: bash
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ github.token }}
   - run: echo 'hello!'
     shell: bash
