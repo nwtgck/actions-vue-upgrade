@@ -17,7 +17,8 @@ runs:
       git add package*.json
       git commit -m "@vue/cli $VUE_CLI_VERSION with vue upgrade"
       git push -fu origin $BRANCH_NAME
-      gh pr create --title "@vue/cli $VUE_CLI_VERSION" --body='Update dependencies with `vue upgrade`.'
+      # NOTE: PR created by secrets.GITHUB_TOKEN does not trigger another GitHub Actions
+      # gh pr create --title "@vue/cli $VUE_CLI_VERSION" --body='Update dependencies with `vue upgrade`.'
     shell: bash
     env:
       GITHUB_TOKEN: ${{ github.token }}
