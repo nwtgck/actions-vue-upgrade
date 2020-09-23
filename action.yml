@@ -14,11 +14,15 @@ runs:
       git checkout -b $BRANCH_NAME
       git config --global user.email "github-actions[bot]@users.noreply.github.com"
       git config --global user.name "github-actions[bot]"
-      git add package*.json
-      git commit -m "@vue/cli $VUE_CLI_VERSION with vue upgrade"
-      git push -fu origin $BRANCH_NAME
-      # NOTE: PR created by secrets.GITHUB_TOKEN does not trigger another GitHub Actions
-      # gh pr create --title "@vue/cli $VUE_CLI_VERSION" --body='Update dependencies with `vue upgrade`.'
+      if [ -n "$(git status --porcelain)" ]; then
+        git add package*.json
+        git commit -m "@vue/cli $VUE_CLI_VERSION with vue upgrade"
+        git push -fu origin $BRANCH_NAME
+        # NOTE: PR created by secrets.GITHUB_TOKEN does not trigger another GitHub Actions
+        # gh pr create --title "@vue/cli $VUE_CLI_VERSION" --body='Update dependencies with `vue upgrade`.'
+      else
+        echo "@vue/cli is up to date"
+      fi
     shell: bash
     env:
       GITHUB_TOKEN: ${{ github.token }}
